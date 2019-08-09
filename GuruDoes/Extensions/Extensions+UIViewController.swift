@@ -97,4 +97,22 @@ extension UIViewController {
     {
         view.endEditing(true)
     }
+    
+    /// Func to present UIAlertController.
+    ///
+    /// - Parameters:
+    ///   - title: Alert title.
+    ///   - message: Alert message.
+    ///   - alertActionTitle: Title for alert action.
+    func showAlert(title: String, message: String, alertActionTitle: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: alertActionTitle, style: .default) { [weak self] (done) in
+            self?.popVC(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
 }

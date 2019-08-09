@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--GuruDoes-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="InitialVC" customModule="GuruDoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="GuruDoes" id="TUe-M2-SN3"/>
+                    <navigationItem key="navigationItem" title="Home" id="TUe-M2-SN3"/>
                     <connections>
                         <outlet property="dateLabel" destination="ldS-9u-dxP" id="QK2-ij-W6N"/>
                     </connections>

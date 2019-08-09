@@ -26,7 +26,6 @@ class InitialVC: UIViewController {
     }
     
     @IBAction func createTaskPressed(_ sender: UIButton) {
-        
         self.pushViewControllerOfType(viewControllerType: CreateTaskVC.self) { (vc) in
             vc.taskViewModel = taskViewModel
         }

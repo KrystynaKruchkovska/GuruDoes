@@ -11,27 +11,53 @@ import CoreData
 
 class CoreTaskViewModel: NSObject {
     let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    var succesfullySave:((Bool)->())? = nil
     
     var coreTasks:[Task] = []
     
-    func addTask(title:String, description:String, priorityLevel:TaskPriority){
+    func addTask(title:String, description:String){
         guard let manegedContext = container?.viewContext else{return}
         let taskObject = Task(context: manegedContext)
         taskObject.taskTitle = title
         taskObject.taskDescription = description
-        taskObject.priorityLevel = priorityLevel
         appendCoreObject(coreTask: taskObject)
+    }
+    
+    func modifyTask(title: String, description: String, taskIndex:Int) {
+        let taskObject = coreTasks[taskIndex]
+        taskObject.taskTitle = title
+        taskObject.taskDescription = description
+        guard let manegedContext = container?.viewContext else {
+            return
+        }
+        saveManegedContext(manegedContext: manegedContext)
     }
     
     func saveManegedContext(manegedContext:NSManagedObjectContext){
         
         do{
             try manegedContext.save()
+            succesfullySave?(true)
             print("Successflly save managed context")
         }catch{
+            succesfullySave?(false)
             debugPrint("Could not save managed context\(error.localizedDescription)")
         }
     }
+    
+    func removeTask(atIndexPath indexPath: IndexPath) {
+        self.removeManegedObject(atIndexPath: indexPath, manegedContext: container?.viewContext, managedObjectsArray: self.coreTasks)
+    }
+
+    
+    func removeManegedObject(atIndexPath indexPath: IndexPath, manegedContext:NSManagedObjectContext?, managedObjectsArray:[NSManagedObject] ) {
+        if let manegedContext = manegedContext {
+            manegedContext.delete(managedObjectsArray[indexPath.row])
+            saveManegedContext(manegedContext: manegedContext)
+        }
+        
+    }
+    
     
     private func appendCoreObject(coreTask:Task){
         coreTasks.append(coreTask)

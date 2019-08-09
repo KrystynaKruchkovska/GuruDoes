@@ -17,6 +17,10 @@ class TasksListVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
+ 
+        let nib = UINib.init(nibName: TaskTableViewCell.defaultReuseIdentifier, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: TaskTableViewCell.defaultReuseIdentifier )
         
     }
     
@@ -25,6 +29,35 @@ class TasksListVC: UIViewController {
             self.tableView.reloadData()
         }
     }
+    
+    func indexPathForCheckbox(_ checkbox:CheckBox) -> IndexPath? {
+        let visibleCells = tableView.visibleCells
+        
+        for cell in visibleCells {
+            if let taskCell = cell as? TaskTableViewCell {
+                if checkbox == taskCell.checkbox {
+                    return tableView.indexPath(for: taskCell)
+                }
+            }
+        }
+        
+        return nil
+    }
+}
+
+extension TasksListVC: CheckboxDelegate {
+    func checkboxPressed(_ checkbox: CheckBox) {
+        
+        guard let indexPath = indexPathForCheckbox(checkbox) else {
+            return
+        }
+        self.taskViewModel.removeTask(atIndexPath: indexPath)
+        self.taskViewModel.fetchTasks(completion: { (success) in
+        })
+        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    
 }
 
 extension TasksListVC:UITableViewDataSource {
@@ -34,12 +67,54 @@ extension TasksListVC:UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        let reusableIdentifier = TaskTableViewCell.defaultReuseIdentifier
         
-        cell.textLabel?.text = (taskViewModel.coreTasks[indexPath.row]).taskTitle
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:reusableIdentifier) as? TaskTableViewCell else {
+            fatalError("The dequeued cell is not an instance of TaskTableViewCell.")
+        }
+        
+        let coreObject = taskViewModel.coreTasks[indexPath.row]
+        cell.delegate = self
+        cell.configureCell(task: coreObject)
         return cell
     }
     
+}
+
+extension TasksListVC : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        var actions = [UITableViewRowAction]()
+        
+        let editAction = UITableViewRowAction(style: .normal, title: "EDIT") { (rowAction, indexPath) in
+            
+            self.pushViewControllerOfType(viewControllerType: CreateTaskVC.self) { [weak self](vc) in
+                vc.detailNavigationItem.title = "Edit Task"
+                vc.taskViewModel = self?.taskViewModel
+                vc.taskNumber = indexPath.row
+            }
+    
+        }
+        
+        editAction.backgroundColor = .lightGray
+        actions.append(editAction)
+        
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "DELETE") { (rowAction, indexPath) in
+            self.taskViewModel.removeTask(atIndexPath: indexPath)
+            self.taskViewModel.fetchTasks(completion: { (success) in
+            })
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        
+        deleteAction.backgroundColor = .red
+        actions.append(deleteAction)
+        
+        return actions
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
 
 extension TasksListVC: Navigatable {
