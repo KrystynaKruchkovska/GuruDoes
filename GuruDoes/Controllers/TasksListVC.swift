@@ -72,7 +72,7 @@ extension TasksListVC: CheckboxDelegate {
             return
         }
         
-        taskViewModel.markAsDone(taskIndex: indexPath.row)
+        taskViewModel.setIsDone(taskIndex: indexPath.row, isDone: !checkbox.isChecked)
     }
     
     

@@ -33,9 +33,9 @@ class CoreTaskViewModel: NSObject {
         saveManegedContext(manegedContext: manegedContext)
     }
     
-    func markAsDone(taskIndex:Int) {
+    func setIsDone(taskIndex: Int, isDone: Bool) {
         let taskObject = coreTasks[taskIndex]
-        taskObject.isDone = true
+        taskObject.isDone = isDone
 
         guard let manegedContext = container?.viewContext else {
             return
