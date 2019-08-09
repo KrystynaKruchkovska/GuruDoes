@@ -21,6 +21,7 @@ class TasksListVC: UIViewController {
  
         let nib = UINib.init(nibName: TaskTableViewCell.defaultReuseIdentifier, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: TaskTableViewCell.defaultReuseIdentifier )
+        addNavigationItemBtn()
         
     }
     
@@ -49,6 +50,17 @@ class TasksListVC: UIViewController {
             vc.detailNavigationItem.title = "Edit Task"
             vc.taskViewModel = self?.taskViewModel
             vc.taskNumber = indexPath.row
+        }
+    }
+    
+    func addNavigationItemBtn(){
+        let plusBtn = UIBarButtonItem.init(image: UIImage.init(named: "plus"), style: .plain, target: self, action:  #selector(menuAction))
+        self.navigationItem.rightBarButtonItem = plusBtn
+    }
+    
+    @objc func menuAction(){
+        self.pushViewControllerOfType(viewControllerType: CreateTaskVC.self) { (vc) in
+            vc.taskViewModel = taskViewModel
         }
     }
 }
