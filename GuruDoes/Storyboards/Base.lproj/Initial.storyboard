@@ -122,4 +122,5 @@
     <resources>
         <image name="manager" width="772" height="519"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>
