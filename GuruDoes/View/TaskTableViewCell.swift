@@ -17,6 +17,7 @@ class TaskTableViewCell: UITableViewCell {
  
     func configureCell(task:Task){
         self.taskLabel.text = task.taskTitle
+        self.checkbox.isChecked = task.isDone
     }
     
     @IBAction func checkboxPressed(_ sender: CheckBox) {

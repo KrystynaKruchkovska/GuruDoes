@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CreateTask-->
+        <!--Create Task-->
         <scene sceneID="qr6-Tz-ig5">
             <objects>
                 <viewController storyboardIdentifier="CreateTaskVC" id="F34-XM-7yw" customClass="CreateTaskVC" customModule="GuruDoes" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,17 +31,8 @@
                                     <action selector="savePressed:" destination="F34-XM-7yw" eventType="touchUpInside" id="oeu-4Z-zPN"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add the title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8f-TF-ssv">
-                                <rect key="frame" x="20" y="108" width="374" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="P0Y-Ar-FTf"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="19"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What would you like to do?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="If0-Vj-JO3">
-                                <rect key="frame" x="20" y="178" width="374" height="150"/>
+                                <rect key="frame" x="20" y="234" width="374" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="6c2-UD-cHO"/>
                                 </constraints>
@@ -103,22 +94,53 @@
                                     <action selector="textField:" destination="fUn-X0-c8G" eventType="editingDidEnd" id="O94-rJ-0P7"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0MT-Tl-qVB">
+                                <rect key="frame" x="20" y="64" width="35" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SLW-7Q-grV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5TE-1O-gI3">
+                                <rect key="frame" x="20" y="184" width="91" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bpU-AZ-r9C"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="njy-vo-VuD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add the title" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r8f-TF-ssv">
+                                <rect key="frame" x="20" y="114" width="374" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="P0Y-Ar-FTf"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="19"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="r8f-TF-ssv" firstAttribute="top" secondItem="0MT-Tl-qVB" secondAttribute="bottom" constant="20" id="5o7-Lu-2hB"/>
                             <constraint firstItem="eAo-5l-k0y" firstAttribute="centerX" secondItem="ywm-HE-7F8" secondAttribute="centerX" id="6Re-Fm-7Iq"/>
-                            <constraint firstItem="If0-Vj-JO3" firstAttribute="top" secondItem="r8f-TF-ssv" secondAttribute="bottom" constant="20" id="7RL-uY-2GO"/>
-                            <constraint firstItem="If0-Vj-JO3" firstAttribute="top" secondItem="r8f-TF-ssv" secondAttribute="bottom" constant="20" id="LFK-G2-J0S"/>
+                            <constraint firstItem="If0-Vj-JO3" firstAttribute="top" secondItem="5TE-1O-gI3" secondAttribute="bottom" constant="20" id="Bxz-vy-pZk"/>
                             <constraint firstItem="PZT-XS-HLX" firstAttribute="trailing" secondItem="r8f-TF-ssv" secondAttribute="trailing" constant="20" id="Ntv-s4-OTi"/>
+                            <constraint firstItem="0MT-Tl-qVB" firstAttribute="leading" secondItem="PZT-XS-HLX" secondAttribute="leading" constant="20" id="Z8k-AC-S2V"/>
                             <constraint firstItem="r8f-TF-ssv" firstAttribute="leading" secondItem="PZT-XS-HLX" secondAttribute="leading" constant="20" id="ayt-vY-3D9"/>
                             <constraint firstItem="PZT-XS-HLX" firstAttribute="trailing" secondItem="If0-Vj-JO3" secondAttribute="trailing" constant="20" id="kPD-fe-sZl"/>
                             <constraint firstItem="If0-Vj-JO3" firstAttribute="leading" secondItem="PZT-XS-HLX" secondAttribute="leading" constant="20" id="klb-dI-64R"/>
-                            <constraint firstItem="r8f-TF-ssv" firstAttribute="top" secondItem="PZT-XS-HLX" secondAttribute="top" constant="20" id="tEl-Vj-aWD"/>
+                            <constraint firstItem="5TE-1O-gI3" firstAttribute="top" secondItem="r8f-TF-ssv" secondAttribute="bottom" constant="20" id="lOm-UR-TpY"/>
+                            <constraint firstItem="5TE-1O-gI3" firstAttribute="leading" secondItem="PZT-XS-HLX" secondAttribute="leading" constant="20" id="lzb-Em-af4"/>
+                            <constraint firstItem="0MT-Tl-qVB" firstAttribute="top" secondItem="PZT-XS-HLX" secondAttribute="top" constant="20" id="mgR-gA-fzf"/>
                             <constraint firstItem="PZT-XS-HLX" firstAttribute="bottom" secondItem="eAo-5l-k0y" secondAttribute="bottom" constant="40" id="wVS-Hv-4c9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PZT-XS-HLX"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CreateTask" id="UbS-8b-MtF">
+                    <navigationItem key="navigationItem" title="Create Task" id="UbS-8b-MtF">
                         <barButtonItem key="leftBarButtonItem" image="back" id="2ZT-vK-Kwh">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -138,25 +160,6 @@
                 <exit id="fUn-X0-c8G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="518.84057971014499" y="-135.26785714285714"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="L8f-nt-G30">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="skh-0x-ghK" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" id="Kmi-q7-5F6">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.0" green="0.89019607840000003" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="F34-XM-7yw" kind="relationship" relationship="rootViewController" id="IqY-8U-svo"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yp6-DD-17b" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-117.39130434782609" y="-123.21428571428571"/>
         </scene>
     </scenes>
     <resources>

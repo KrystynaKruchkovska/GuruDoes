@@ -19,26 +19,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="398" height="78.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ewm-W9-wbW" customClass="CheckBox" customModule="GuruDoes" customModuleProvider="target">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ewm-W9-wbW" customClass="CheckBox" customModule="GuruDoes" customModuleProvider="target">
                         <rect key="frame" x="6" y="24.5" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="7LV-S0-ah7"/>
                             <constraint firstAttribute="height" constant="30" id="Est-7A-cC7"/>
                         </constraints>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal">
+                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
                         <connections>
                             <action selector="checkboxPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8IT-qU-uIm"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uK8-x5-7Tm">
-                        <rect key="frame" x="36" y="0.0" width="362" height="78.5"/>
+                        <rect key="frame" x="42" y="0.0" width="356" height="78.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uK8-x5-7Tm" firstAttribute="leading" secondItem="Ewm-W9-wbW" secondAttribute="trailing" id="2Id-0Z-3V9"/>
                     <constraint firstAttribute="trailing" secondItem="uK8-x5-7Tm" secondAttribute="trailing" id="3qx-4a-RgY"/>
+                    <constraint firstItem="uK8-x5-7Tm" firstAttribute="leading" secondItem="Ewm-W9-wbW" secondAttribute="trailing" constant="6" id="9l8-P2-8Tl"/>
                     <constraint firstAttribute="bottom" secondItem="uK8-x5-7Tm" secondAttribute="bottom" id="AEp-hd-pKv"/>
                     <constraint firstItem="Ewm-W9-wbW" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="GX7-be-cBK"/>
                     <constraint firstItem="uK8-x5-7Tm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="awf-Rb-DHV"/>

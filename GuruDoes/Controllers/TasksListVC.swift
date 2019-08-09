@@ -43,6 +43,14 @@ class TasksListVC: UIViewController {
         
         return nil
     }
+    
+    func showEdit(withIndexPath indexPath:IndexPath) {
+        self.pushViewControllerOfType(viewControllerType: CreateTaskVC.self) { [weak self](vc) in
+            vc.detailNavigationItem.title = "Edit Task"
+            vc.taskViewModel = self?.taskViewModel
+            vc.taskNumber = indexPath.row
+        }
+    }
 }
 
 extension TasksListVC: CheckboxDelegate {
@@ -51,10 +59,8 @@ extension TasksListVC: CheckboxDelegate {
         guard let indexPath = indexPathForCheckbox(checkbox) else {
             return
         }
-        self.taskViewModel.removeTask(atIndexPath: indexPath)
-        self.taskViewModel.fetchTasks(completion: { (success) in
-        })
-        self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        taskViewModel.markAsDone(taskIndex: indexPath.row)
     }
     
     
@@ -87,14 +93,9 @@ extension TasksListVC : UITableViewDelegate {
         
         var actions = [UITableViewRowAction]()
         
-        let editAction = UITableViewRowAction(style: .normal, title: "EDIT") { (rowAction, indexPath) in
+        let editAction = UITableViewRowAction(style: .normal, title: "EDIT") { [weak self] (rowAction, indexPath) in
             
-            self.pushViewControllerOfType(viewControllerType: CreateTaskVC.self) { [weak self](vc) in
-                vc.detailNavigationItem.title = "Edit Task"
-                vc.taskViewModel = self?.taskViewModel
-                vc.taskNumber = indexPath.row
-            }
-    
+            self?.showEdit(withIndexPath: indexPath)
         }
         
         editAction.backgroundColor = .lightGray
@@ -112,9 +113,15 @@ extension TasksListVC : UITableViewDelegate {
         
         return actions
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showEdit(withIndexPath: indexPath)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
 }
 
 extension TasksListVC: Navigatable {

@@ -33,6 +33,16 @@ class CoreTaskViewModel: NSObject {
         saveManegedContext(manegedContext: manegedContext)
     }
     
+    func markAsDone(taskIndex:Int) {
+        let taskObject = coreTasks[taskIndex]
+        taskObject.isDone = true
+
+        guard let manegedContext = container?.viewContext else {
+            return
+        }
+        saveManegedContext(manegedContext: manegedContext)
+    }
+    
     func saveManegedContext(manegedContext:NSManagedObjectContext){
         
         do{
